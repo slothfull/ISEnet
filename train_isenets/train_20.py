@@ -367,48 +367,7 @@ def main():
         builder.add_meta_graph_and_variables(sess, [args.tag_string])
         builder.save()
         print('[i] programme finished!')
-        # # 读取一定数量的test数据集 运行训练好的模型 并根据在test上的表现绘制confusion matrix
-        # print('[i] Testing and drawing...')
-        # # test will take up 210M memories
-        # total_test_example_array_channel0 = np.load(test_data_path0)  # (10044,512)
-        # total_test_label_array_channel0 = np.load(test_label_path0)  # (10044,1)
-        # total_test_example_array_channel1 = np.load(test_data_path1)  # (10044,512)
-        # # combine both channel  (10044,1,512,2)
-        # print('[i] Combining 2 channel test example...')
-        # total_test_example_array = np.zeros(shape=(1, 1, 512, 2))
-        # total_test_label_array = total_test_label_array_channel0
-        # for _ in range(len(total_test_label_array_channel0)):  # 0-10044
-        #     # 将两个channel的ecg_chip进行堆叠
-        #     tmp0 = np.zeros(shape=(2 * td.sample_length,))
-        #     for __ in range(len(tmp0)):
-        #         if __ % 2 == 0:
-        #             tmp0[__] = total_test_example_array_channel0[_][__ // 2]  # channel-1
-        #         else:
-        #             tmp0[__] = total_test_example_array_channel1[_][(__ - 1) // 2]  # channel-2
-        #     tmp1 = tmp0.reshape((td.sample_length, 2))  # (512,2)
-        #     tmp2 = np.expand_dims(tmp1, axis=0)  # (1,512,2)
-        #     tmp3 = np.expand_dims(tmp2, axis=0)  # (1,1,512,2)
-        #     total_test_example_array = np.concatenate((total_test_example_array, tmp3), axis=0)  # (?,1,512,2)
-        # total_test_example_array = total_test_example_array[1:, ...]  # (10044,1,512,2)
-        # y_test_range = np.arange(0, 10044)
-        # y_test = Dataset(y_test_range)
-        # test_index_batch_summary = y_test.next_batch(para_batch_size=args.num_samples_for_test_summary)
-        # example_batch_for_test_summary = total_test_example_array[test_index_batch_summary]  # shape=(1000,1,512,2)
-        # label_batch_for_test_summary = total_test_label_array[test_index_batch_summary]  # shape=(1000, 1)
-        # one_hot_label_batch_for_test_summary = dense_to_one_hot(label_batch_for_test_summary, td.num_classes)
-        # # save labels for matrix-plot
-        # squeezed_summary = np.squeeze(label_batch_for_test_summary)  # shape=(1000,)
-        # total_test_dict = {xs: example_batch_for_test_summary, ys: one_hot_label_batch_for_test_summary}
-        # # save results for matrix-plot
-        # print('[i] Predicting results...')
-        # y_pred = sess.run(y_predict, feed_dict=total_test_dict)
-        # # if testing and y_pred is not null array:
-        # if args.confusion_matrix_normalization and y_pred.shape[0]:
-        #     # when epochs done plot confusion matrix...
-        #     feed_and_derive_confusion_matrix(squeezed_summary, y_pred, args.confusion_matrix_normalization, args.class_names)
-
+ 
 
 if __name__ == '__main__':
     main()
-
-# ssh -L 8008:127.0.0.1:6006 dongh@183.136.134.153 -p 32222
