@@ -1,0 +1,5 @@
+@1 train_isenets和train_senets分别是针对一维度信号的senet&isenet的python训练执行文件
+@2 q_resnet_v1 & q_resnet_v2是模型结构定义文件(针对一维信号的5分类模型)
+@3 q_trainingdata是data_input_pipeline
+@4 test_models包含模型测试程序样例
+@5 summaries包含了tensorboard中针对模型参数可视化 训练测试结果跟踪的文件
