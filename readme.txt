@@ -18,4 +18,4 @@
   + namedtuples.py -> 模块定义了训练集、测试集中数据样本的基本格式
   + test_models -> 包含模型测试程序样例
   + summaries -> 模块包含了：tensorboard中针对模型参数可视化的监测代码部分 
-                以及 isenet/senet 训练、测试中的结果、各项评价指标的数值变动的监测跟踪部分
+                 以及 isenet/senet 训练、测试中的结果、各项评价指标的数值变动的监测跟踪部分
